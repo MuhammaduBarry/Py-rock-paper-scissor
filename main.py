@@ -13,15 +13,46 @@ def computers_move():
     return computer_choice
 
 
-def game_score(player, computer):
-    score_board = print(f'''
-    Current playBoard:
-    player: {player}, computer: {computer}
-    ''')
-    return score_board
+def player_win():
+    print(f"Good Job {player_name} that's a win for humanity")
+
+
+def computers_win():
+    print(f"do not allow humanity to loose {player_name}!!!!!")
+
+
+def game_draw():
+    print(f"Phew {player_name}, you have bought humanity another life")
 
 
 def game():
+    # Creating a while loop to check if player's move is in choices
+    count = 0
+    # Creating point systems
+    players_point = 0
+    computers_point = 0
+
+    def game_score(player, computer):
+        print(f'''
+        Current playBoard:
+        player: {player}, computer: {computer}
+        ''')
+        if count == 5:
+            if players_point > computers_point:
+                print(f'''
+                Good job {player_name}, you have saved humanity this time,
+                you are a true warrior, now train even harder for next time
+                ''')
+            elif players_point < computers_point:
+                print(f'''
+                It was a long shot but i guess, we never stood a chance,
+                do not blame yourself {player_name}, you were humanities best bet.
+                ''')
+            else:
+                print(f'''
+                Good job on surviving, but we need to play a rematch for humanities sake...
+                ''')
+
     print(f'''
     The Rules Are simple, you choose either rock,paper, or scissor.
     You are up against The evil machine that wants to take over the world,
@@ -30,11 +61,6 @@ def game():
     Good Luck {player_name}
     ''')
 
-    # Creating a while loop to check if player's move is in choices
-    count = 0
-    # Creating point systems
-    players_point = 0
-    computers_point = 0
     while True and count < 5:
         players_move = input("Choose your weapon: ").lower()
 
@@ -44,41 +70,42 @@ def game():
             # Checking for win cases
             if players_move == choices[0] and computers_turn == choices[2]:
                 players_point += 1
-                print(f"Good Job {player_name} that's a win for humanity")
+                player_win()
                 game_score(players_point, computers_point)
             elif players_move == choices[1] and computers_turn == choices[0]:
                 players_point += 1
-                print(f"Good Job {player_name} that's a win for humanity")
+                player_win()
                 game_score(players_point, computers_point)
             elif players_move == choices[2] and computers_turn == choices[1]:
                 players_point += 1
-                print(f"Good Job {player_name} that's a win for humanity")
+                player_win()
                 game_score(players_point, computers_point)
             # Checking for loose cases
             elif computers_turn == choices[0] and players_move == choices[2]:
                 computers_point += 1
-                print(f"do not allow humanity to loose {player_name}!!!!!")
+                computers_win()
                 game_score(players_point, computers_point)
             elif computers_turn == choices[1] and players_move == choices[0]:
                 computers_point += 1
-                print(f"do not allow humanity to loose {player_name}!!!!!")
+                computers_win()
                 game_score(players_point, computers_point)
             elif computers_turn == choices[2] and players_move == choices[1]:
                 computers_point += 1
+                computers_win()
                 game_score(players_point, computers_point)
-                print(f"do not allow humanity to loose {player_name}!!!!!")
             # Checking for draw Cases
             elif players_move == choices[0] and computers_turn == choices[0]:
-                print(f"Phew {player_name}, you have bought humanity another life")
+                game_draw()
                 game_score(players_point, computers_point)
             elif players_move == choices[1] and computers_turn == choices[1]:
-                print(f"Phew {player_name}, you have bought humanity another life")
+                game_draw()
                 game_score(players_point, computers_point)
             elif players_move == choices[2] and computers_turn == choices[2]:
-                print(f"Phew {player_name}, you have bought humanity another life")
+                game_draw()
                 game_score(players_point, computers_point)
             else:
                 print("something went wrong")
+        if count == 5:
 
             count += 1
         else:
