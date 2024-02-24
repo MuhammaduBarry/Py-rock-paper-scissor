@@ -13,18 +13,6 @@ def computers_move():
     return computer_choice
 
 
-def player_win():
-    print(f"Good Job {player_name} that's a win for humanity")
-
-
-def computers_win():
-    print(f"do not allow humanity to loose {player_name}!!!!!")
-
-
-def game_draw():
-    print(f"Phew {player_name}, you have bought humanity another life")
-
-
 def game():
     # Creating a while loop to check if player's move is in choices
     count = 0
@@ -37,21 +25,15 @@ def game():
         Current playBoard:
         player: {player}, computer: {computer}
         ''')
-        if count == 5:
-            if players_point > computers_point:
-                print(f'''
-                Good job {player_name}, you have saved humanity this time,
-                you are a true warrior, now train even harder for next time
-                ''')
-            elif players_point < computers_point:
-                print(f'''
-                It was a long shot but i guess, we never stood a chance,
-                do not blame yourself {player_name}, you were humanities best bet.
-                ''')
-            else:
-                print(f'''
-                Good job on surviving, but we need to play a rematch for humanities sake...
-                ''')
+
+    def player_win():
+        print(f"Good Job {player_name} that's a win for humanity")
+
+    def computers_win():
+        print(f"do not allow humanity to loose {player_name}!!!!!")
+
+    def game_draw():
+        print(f"Phew {player_name}, you have bought humanity another life")
 
     print(f'''
     The Rules Are simple, you choose either rock,paper, or scissor.
@@ -105,15 +87,27 @@ def game():
                 game_score(players_point, computers_point)
             else:
                 print("something went wrong")
-        if count == 5:
-
             count += 1
-        else:
+        elif players_move not in choices:
             print(f'''
                    You fool, {players_move} is not a weapon,
                    you are going to cause humanity to lose,
                    TRY AGAIN!!!!!
                ''')
+    if count == 5 and players_point > computers_point:
+        print(f'''
+            Good job {player_name}, you have saved humanity this time,
+            you are a true warrior, now train even harder for next time
+            ''')
+    elif count == 5 and players_point < computers_point:
+        print(f'''
+            It was a long shot but i guess, we never stood a chance,
+            do not blame yourself {player_name}, you were humanities best bet.
+            ''')
+    elif count == 5 and players_point == computers_point:
+        print(f'''
+            Good job on surviving, but we need to play a rematch for humanities sake...
+            ''')
 
 
 game()
