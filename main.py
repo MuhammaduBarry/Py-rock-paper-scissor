@@ -26,6 +26,7 @@ def game():
         player: {player}, computer: {computer}
         ''')
 
+    # Creating condition statements
     def player_win():
         print(f"Good Job {player_name} that's a win for humanity")
 
