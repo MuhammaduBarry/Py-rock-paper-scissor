@@ -1,4 +1,4 @@
-# Welcome to Python Tic Tac Toe
+# Welcome to Python Rock Paper Scissor
 
 # How to play game:
 1. Download file and make sure you have the latest python install
